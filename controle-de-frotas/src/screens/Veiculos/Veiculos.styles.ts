@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
         width: 120,
         height: 36,
         borderRadius: 20,
-        backgroundColor: '#31CF67',
+        backgroundColor: '#0d6efd',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 5
@@ -66,7 +66,7 @@ export const styles = StyleSheet.create({
         width: 48,
         height: 48,
         borderRadius: 5,
-        backgroundColor: '#31CF67',
+        backgroundColor: '#0d6efd',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 5
@@ -77,5 +77,11 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 36,
         marginBottom: 42
+    },
+    listEmptyText: {
+        color: '#FFF',
+        fontSize: 14,
+        textAlign: 'center',
     }
+
 });

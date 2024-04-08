@@ -1,9 +1,9 @@
 import React from 'react';
-import { Home } from './src/screens/Home/indexHome';
+import { Veiculos } from './src/screens/Veiculos/Veiculos.index';
 
 export default function App(){
     return(
-        <Home />
+        <Veiculos />
     );
 }
 
