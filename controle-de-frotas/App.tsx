@@ -1,9 +1,19 @@
-import React from 'react';
-import { Veiculos } from './src/screens/Veiculos/Veiculos.index';
+import { ThemeProvider } from "styled-components/native";
+import { useFonts, Roboto_400Regular, Roboto_700Bold } from "@expo-google-fonts/roboto";
 
-export default function App(){
-    return(
-        <Veiculos />
+import { SignIn } from "./src/screens/SignIn";
+import { Loading } from "./src/components/Loading";
+
+export default function App() {
+    const [fontsLoaded] = useFonts({Roboto_400Regular, Roboto_700Bold});
+
+    if(!fontsLoaded){
+        return(
+            <Loading />
+        )
+    }
+
+    return (
+            <SignIn />
     );
 }
-
