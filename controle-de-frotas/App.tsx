@@ -11,6 +11,7 @@ import * as React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from './src/screens/Login/index';
 import Home from './src/screens/Home/index';
+import BottomTabNavigator from "./src/components/Button/BottomTabNavigator";
 
 const Stack = createStackNavigator();
 
@@ -29,10 +30,7 @@ export default function App() {
         //</ThemeProvider>
 
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Login">
-                <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="Home" component={Home} />
-            </Stack.Navigator>
+            <BottomTabNavigator />
         </NavigationContainer>
     );
 }
