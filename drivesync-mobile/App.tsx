@@ -1,32 +1,18 @@
-import { ThemeProvider } from "styled-components";
-import { useFonts, Roboto_400Regular, Roboto_700Bold } from "@expo-google-fonts/roboto";
-
-import theme from './src/theme';
-
-import LoginScreen from "./src/screens/SignIn"; // Ajuste aqui
-import HomeScreen from "./src/screens/Home";
-
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 
-import {Loading} from "./src/components/Loading"; // Supondo que Loading seja um componente padrão
-import { StatusBar } from "react-native";
+import { AuthProvider } from "./src/contexts/auth";
 
-//const Stack = createStackNavigator();
+import Routes from "./src/routes";
 
-
-export default function App(){
-  const[fontsLoaded] = useFonts ({Roboto_400Regular, Roboto_700Bold});
-
-  if(!fontsLoaded){
-    return(
-      <Loading />
-    );
-  }
-
+const App: React.FC = () => {
   return (
     <NavigationContainer>
-      <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
-      <LoginScreen/>
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </NavigationContainer>
   );
-}
+};
+
+export default App;
