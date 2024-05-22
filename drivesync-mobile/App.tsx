@@ -3,9 +3,15 @@ import { useFonts, Roboto_400Regular, Roboto_700Bold } from "@expo-google-fonts/
 
 import theme from './src/theme';
 
-import { SignIn } from "./src/screens/SignIn";
-import { Loading } from "./src/components/Loading";
+import LoginScreen from "./src/screens/SignIn"; // Ajuste aqui
+import HomeScreen from "./src/screens/Home";
+
+import { NavigationContainer } from "@react-navigation/native";
+
+import {Loading} from "./src/components/Loading"; // Supondo que Loading seja um componente padrão
 import { StatusBar } from "react-native";
+
+//const Stack = createStackNavigator();
 
 
 export default function App(){
@@ -18,9 +24,9 @@ export default function App(){
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />      
-      <SignIn />
-    </ThemeProvider>
+    <NavigationContainer>
+      <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
+      <LoginScreen/>
+    </NavigationContainer>
   );
 }
