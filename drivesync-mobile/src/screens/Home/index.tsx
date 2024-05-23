@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Dashboard: React.FC = () => {
+const Home: React.FC = () => {
   const { user, signOut } = useAuth();
 
   function handleSignOut() {
@@ -25,4 +25,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default Home;

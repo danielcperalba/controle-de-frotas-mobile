@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function Viagem(){
+export default function Atividades(){
     return(
         <View style={styles.container}>
-            <Text style={styles.text}>Veiculos</Text>
+            <Text style={styles.text}>Atividades</Text>
         </View>
     );
 }
