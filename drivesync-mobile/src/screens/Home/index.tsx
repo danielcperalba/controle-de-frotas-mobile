@@ -1,28 +1,22 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
-import { useAuth } from "../../contexts/auth";
+import { View, Text, StyleSheet } from "react-native";
+
+export default function Home(){
+    return(
+        <View style={styles.container}>
+        </View>
+    );
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#202024'
+    },
+    text:{
+        fontSize: 25,
+        fontWeight: 'bold'
+    }
 });
-
-const Home: React.FC = () => {
-  const { user, signOut } = useAuth();
-
-  function handleSignOut() {
-    signOut();
-  }
-
-  return (
-    <View style={styles.container}>
-      <Text>{user?.name}</Text>
-      <Button title="Desconectar" onPress={handleSignOut} />
-    </View>
-  );
-};
-
-export default Home;
