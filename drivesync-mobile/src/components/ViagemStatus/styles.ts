@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#202024",
     alignItems: "center",
-    marginBottom: 10
+    marginBottom: 20
   },
   card: {
     backgroundColor: "#29292E",
@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     width: 364,
     height: 100,
     flexDirection: "row",
+    alignItems: "center", // Centralizar verticalmente o conteúdo dentro do card
   },
   iconSquare: {
     width: 70,
@@ -23,9 +24,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  icon:{
+  iconSquareCheck: {
+    marginRight: 10,
+    borderRadius: 6,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  icon: {
     color: '#00B37E',
   },
+
   content: {
     flex: 1,
   },
@@ -34,19 +42,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 6,
   },
-  value: {
-    fontSize: 16,
-    color: "#fff",
+  title:{
+    color: '#E1E1E6',
+    fontSize: 15,
+    fontWeight: 'bold'
   },
-  valueTitle: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 'bold',
-    textTransform: 'uppercase', 
-  },
-  valueStatus:{
-    fontSize: 16,
-    color: "#00B37E"
+  subtitle:{
+    color: '#00B37E',
+    fontSize: 15,
+    fontWeight: 'bold'
   }
 });
 

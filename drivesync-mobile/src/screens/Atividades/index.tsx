@@ -1,22 +1,32 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, TextInput } from "react-native";
+import styles from './styles';
 
-export default function Atividades(){
-    return(
-        <View style={styles.container}>
-        </View>
-    );
+import axios from "axios";
+import ViagemCard from "../../components/ViagemCard";
+import ViagemStatus from "../../components/ViagemStatus";
+
+export default function Atividades() {
+
+  return (
+    <View style={styles.container}>
+
+      <ViagemStatus />
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Pesquisar Viagem"
+          placeholderTextColor="#aaa"
+        />
+      </View>
+
+      <Text style={styles.subtitle}>Histórico</Text>
+
+      <View style={styles.cardContainer}>
+        <ViagemCard />
+        <ViagemCard />
+        <ViagemCard />
+      </View>
+    </View>
+  );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#202024'
-    },
-    text:{
-        fontSize: 25,
-        fontWeight: 'bold'
-    }
-});

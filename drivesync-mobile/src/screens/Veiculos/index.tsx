@@ -21,6 +21,9 @@ export default function Veiculo() {
       <View style={styles.cardContainer}>
         <VeiculoCard />
         <VeiculoCard />
+        <VeiculoCard />
+        <VeiculoCard />
+        
       </View>
     </View>
   );

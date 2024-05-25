@@ -23,8 +23,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  icon:{
+  iconSquareCheck: {
+    marginRight: 10,
+    borderRadius: 6,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  icon: {
     color: '#00B37E',
+  },
+  iconCheck: {
+    color: '#00B37E'
   },
   content: {
     flex: 1,
@@ -36,17 +45,16 @@ const styles = StyleSheet.create({
   },
   value: {
     fontSize: 16,
-    color: "#fff",
+    color: "#C4C4CC",
   },
   valueTitle: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
-    textTransform: 'uppercase', 
   },
-  valueStatus:{
+  valueDate: {
     fontSize: 16,
-    color: "#00B37E"
+    color: "#C4C4CC"
   }
 });
 
