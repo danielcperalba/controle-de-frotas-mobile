@@ -23,6 +23,7 @@ export default function Veiculo() {
         <VeiculoCard />
         <VeiculoCard />
         <VeiculoCard />
+
         
       </View>
     </View>
