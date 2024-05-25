@@ -22,7 +22,7 @@ const MinhaConta: React.FC = () => {
       </View>
 
       <TouchableOpacity style={styles.button} onPress={handleSignOut}>
-        <Text style={styles.buttonText}>Entrar</Text>
+        <Text style={styles.buttonText}>Desconectar</Text>
       </TouchableOpacity>
 
     </View>
