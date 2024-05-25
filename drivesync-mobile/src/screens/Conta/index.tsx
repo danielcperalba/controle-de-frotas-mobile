@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useAuth } from "../../contexts/auth";
 
 const MinhaConta: React.FC = () => {
@@ -9,11 +10,18 @@ const MinhaConta: React.FC = () => {
     signOut();
   }
 
+  // Função para extrair as iniciais do nome do usuário
+  const getUserInitials = (name: string) => {
+    const initials = name.split(' ').map(part => part.charAt(0)).join('');
+    return initials.toUpperCase().slice(0, 2);
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Minha Conta</Text>
+      <View style={styles.circle}>
+        <Text style={styles.initials}>{getUserInitials(user?.name || '')}</Text>
+      </View>
       <View style={styles.userInfo}>
-        <Text style={styles.label}>Nome:</Text>
         <Text style={styles.info}>{user?.name}</Text>
       </View>
       <View style={styles.userInfo}>
@@ -23,8 +31,8 @@ const MinhaConta: React.FC = () => {
 
       <TouchableOpacity style={styles.button} onPress={handleSignOut}>
         <Text style={styles.buttonText}>Desconectar</Text>
+        <Ionicons name="log-out-outline" size={25} color="white" />
       </TouchableOpacity>
-
     </View>
   );
 };
@@ -43,6 +51,20 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     color: '#fff'
   },
+  circle: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: '#00875F',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  initials: {
+    fontSize: 40,
+    color: '#fff',
+    fontWeight: 'bold',
+  },
   userInfo: {
     flexDirection: "row",
     marginBottom: 10,
@@ -58,16 +80,18 @@ const styles = StyleSheet.create({
     color: '#fff'
   },
   button: {
-    width: "100%",
-    height: 40,
-    backgroundColor: "#00875F",
-    borderRadius: 6,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: '#00875F',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 20,
   },
   buttonText: {
-    color: "#fff",
-    fontSize: 18,
+    color: 'white',
+    fontSize: 16,
+    marginRight: 10, // Espaçamento entre o texto e o ícone
   },
 });
 
