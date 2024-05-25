@@ -19,15 +19,22 @@ export default function VeiculoCard() {
                 <View style={styles.iconSquare}>
                     <Ionicons style={styles.icon} name="car" size={40} color="white" />
                 </View>
+
                 <View style={styles.content}>
                     <View style={styles.row}>
                         <Text style={styles.valueTitle}>{veiculoExemplo.marca}</Text>
                         <Text style={styles.valueTitle}>{veiculoExemplo.modelo}</Text>
                     </View>
                     <View style={styles.row}>
-                        <Text style={styles.value}>{veiculoExemplo.placa}</Text>
+                        <Text style={styles.valueSubtitle}>{veiculoExemplo.placa}</Text>
                     </View>
-                    <Text style={styles.valueStatus}>{veiculoExemplo.status}</Text>
+                    <View style={styles.valueStatusBagde}>
+                        <Text style={styles.valueStatus}>{veiculoExemplo.status}</Text>
+                    </View>
+                </View>
+
+                <View style={styles.iconChevron}>
+                    <Ionicons name="chevron-forward-outline" size={30} color="#8D8D99" />
                 </View>
             </View>
         </View>

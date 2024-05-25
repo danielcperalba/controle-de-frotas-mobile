@@ -23,6 +23,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  iconChevron:{
+    marginRight: 10,
+    borderRadius: 6,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   icon:{
     color: '#00B37E',
   },
@@ -34,19 +40,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 6,
   },
-  value: {
-    fontSize: 16,
-    color: "#fff",
-  },
+
   valueTitle: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
-    textTransform: 'uppercase', 
+  },
+  valueSubtitle: {
+    fontSize: 16,
+    color: "#C4C4CC",
   },
   valueStatus:{
-    fontSize: 16,
-    color: "#00B37E"
+    fontSize: 15,
+    color: "#00B37E",
+  },
+  valueStatusBagde: {
+    marginTop: 1,
+    backgroundColor: "#00B37E50",
+    width: 85,
+    alignItems: 'center',
+    borderRadius: 9
   }
 });
 
