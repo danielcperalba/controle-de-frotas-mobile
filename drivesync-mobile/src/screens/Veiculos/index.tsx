@@ -1,8 +1,9 @@
+// src/screens/Veiculos/index.tsx
 import React, { useEffect, useState } from "react";
 import { View, Text, TextInput, FlatList, ActivityIndicator } from "react-native";
 import styles from './styles';
 import VeiculoCard from "../../components/VeiculoCard";
-import api from "../../services/api"; // Importar a instância da API
+import api from "../../services/api";
 
 export default function Veiculo() {
   const [veiculos, setVeiculos] = useState([]);
@@ -40,7 +41,6 @@ export default function Veiculo() {
           placeholderTextColor="#aaa"
         />
       </View>
-      
       <FlatList
         data={veiculos}
         keyExtractor={(item) => item.id.toString()}

@@ -1,12 +1,31 @@
+// src/components/VeiculoCard/index.tsx
 import React from "react";
 import { View, Text } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../@type/navigation';
 
-export default function VeiculoCard({ veiculo }) {
-  const navigation = useNavigation();
+type NavigationProp = StackNavigationProp<RootStackParamList, 'DetalhesVeiculo'>;
+
+interface VeiculoCardProps {
+  veiculo: {
+    id: number;
+    marca: string;
+    modelo: string;
+    ano: number;
+    placa: string;
+    quilometragem: number;
+    tp_combustivel: string;
+    dt_aquisicao: string;
+    status: string;
+  };
+}
+
+export default function VeiculoCard({ veiculo }: VeiculoCardProps) {
+  const navigation = useNavigation<NavigationProp>();
 
   const handleCardPress = () => {
     navigation.navigate('DetalhesVeiculo', { veiculo });
@@ -17,7 +36,7 @@ export default function VeiculoCard({ veiculo }) {
       <View style={styles.container}>
         <View style={styles.card}>
           <View style={styles.iconSquare}>
-            <Ionicons style={styles.icon} name="car" size={40} color="white" />
+            <Ionicons style={styles.icon} name="car-outline" size={40} color="white" />
           </View>
 
           <View style={styles.content}>
