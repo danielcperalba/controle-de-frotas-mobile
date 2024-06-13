@@ -28,6 +28,20 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     width: '100%',
   },
+  pickerContainer: {
+    backgroundColor: '#29292E',
+    color: '#fff',
+    borderRadius: 5,
+    paddingVertical: 0,
+    paddingHorizontal: 15,
+    fontSize: 16,
+    marginBottom: 16,
+    width: '100%',
+  },
+  picker: {
+    color: '#aaa',
+    backgroundColor: '#29292E',
+  },
   checkListContainer: {
   },
   checkListItem: {

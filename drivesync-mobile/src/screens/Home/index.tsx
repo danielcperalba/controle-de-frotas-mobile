@@ -1,22 +1,27 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, TextInput } from "react-native";
+import styles from './styles';
+import axios from "axios";
+import ViagemCard from "../../components/ViagemCard";
+import ViagemStatus from "../../components/ViagemStatus";
+import { useAuth } from "../../contexts/auth";
 
-export default function Home(){
-    return(
+export default function Atividades() {
+    const { user } = useAuth();
+
+    return (
         <View style={styles.container}>
+
+            <View style={styles.userInfo}>
+                <Text style={styles.info}> Olá, {user?.name}!</Text>
+            </View>
+
+            <ViagemStatus />
+
+            <View style={styles.divider} />
+
+            <Text style={styles.subtitle}>Atualizações</Text>
+
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#202024'
-    },
-    text:{
-        fontSize: 25,
-        fontWeight: 'bold'
-    }
-});

@@ -17,23 +17,23 @@ const Stack = createStackNavigator();
 
 const VeiculoStack = () => (
   <Stack.Navigator>
-    <Stack.Screen 
-      name="Veiculos" 
-      component={Veiculo} 
+    <Stack.Screen
+      name="Veiculos"
+      component={Veiculo}
       options={{
-        headerStyle: { backgroundColor: '#29292E' }, 
+        headerStyle: { backgroundColor: '#29292E' },
         headerTintColor: '#FFFFFF',
         title: 'Veículos'
       }}
     />
-    <Stack.Screen 
-      name="DetalhesVeiculo" 
-      component={DetalhesVeiculo} 
+    <Stack.Screen
+      name="DetalhesVeiculo"
+      component={DetalhesVeiculo}
       options={{
         headerStyle: { backgroundColor: '#29292E' },
         headerTintColor: '#FFFFFF',
         title: 'Detalhes do Veículo'
-      }} 
+      }}
     />
   </Stack.Navigator>
 );
@@ -59,7 +59,9 @@ const AppRoutes: React.FC = () => (
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" size={25} color={color} />
           ),
-          title: 'Início', // Adiciona o título para a tela 'Início'
+          title: 'Início',
+          headerStyle: { backgroundColor: '#29292E' },
+          headerTintColor: '#FFFFFF'
         }}
       />
       <Tab.Screen
@@ -70,6 +72,8 @@ const AppRoutes: React.FC = () => (
             <Ionicons name="list" size={25} color={color} />
           ),
           title: 'Atividades', // Adiciona o título para a tela 'Atividades'
+          headerStyle: { backgroundColor: '#29292E' },
+          headerTintColor: '#FFFFFF'
         }}
       />
       <Tab.Screen
@@ -80,6 +84,8 @@ const AppRoutes: React.FC = () => (
             <Ionicons name="add-outline" size={40} color={color} />
           ),
           title: 'Nova Viagem', // Adiciona o título para a tela 'Nova Viagem'
+          headerStyle: { backgroundColor: '#29292E' },
+          headerTintColor: '#FFFFFF'
         }}
       />
       <Tab.Screen
@@ -99,6 +105,8 @@ const AppRoutes: React.FC = () => (
             <Ionicons name="person" size={25} color={color} />
           ),
           title: 'Minha Conta', // Adiciona o título para a tela 'Minha Conta'
+          headerStyle: { backgroundColor: '#29292E' },
+          headerTintColor: '#FFFFFF'
         }}
       />
     </Tab.Navigator>
