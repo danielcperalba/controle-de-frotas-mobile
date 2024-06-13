@@ -1,10 +1,11 @@
+// src/components/VeiculoCard/styles.ts
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#202024",
     alignItems: "center",
-    marginBottom: 10
+    marginBottom: 10,
   },
   card: {
     backgroundColor: "#29292E",
@@ -13,6 +14,17 @@ const styles = StyleSheet.create({
     width: 364,
     height: 100,
     flexDirection: "row",
+    position: 'relative', // Para permitir posicionamento absoluto do border
+  },
+  leftBorder: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: 5, // Largura da borda
+    backgroundColor: '#00B37E',
+    borderTopLeftRadius: 6,
+    borderBottomLeftRadius: 6,
   },
   iconSquare: {
     width: 70,
@@ -21,27 +33,26 @@ const styles = StyleSheet.create({
     marginRight: 15,
     borderRadius: 6,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
-  iconChevron:{
+  iconChevron: {
     marginRight: 10,
     borderRadius: 6,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
-  icon:{
+  icon: {
     color: '#00B37E',
   },
   content: {
     flex: 1,
-    gap: 2
+    gap: 2,
   },
   row: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
   },
-
   valueTitle: {
     color: '#FFFFFF',
     fontSize: 18,
@@ -51,17 +62,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#C4C4CC",
   },
-  valueStatus:{
+  valueStatus: {
     fontSize: 15,
+    fontWeight: 'bold',
     color: "#00B37E",
   },
-  valueStatusBagde: {
-    marginTop: 1,
+  valueStatusBadge: {
     backgroundColor: "#00B37E50",
-    width: 85,
+    width: 95,
     alignItems: 'center',
-    borderRadius: 9
-  }
+    justifyContent: 'center',
+    borderRadius: 10
+  },
 });
 
 export default styles;

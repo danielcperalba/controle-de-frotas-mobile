@@ -35,6 +35,7 @@ export default function VeiculoCard({ veiculo }: VeiculoCardProps) {
     <TouchableOpacity onPress={handleCardPress}>
       <View style={styles.container}>
         <View style={styles.card}>
+          <View style={styles.leftBorder}></View>
           <View style={styles.iconSquare}>
             <Ionicons style={styles.icon} name="car-outline" size={40} color="white" />
           </View>
@@ -47,7 +48,7 @@ export default function VeiculoCard({ veiculo }: VeiculoCardProps) {
             <View style={styles.row}>
               <Text style={styles.valueSubtitle}>{veiculo.placa}</Text>
             </View>
-            <View style={styles.valueStatusBagde}>
+            <View style={styles.valueStatusBadge}>
               <Text style={styles.valueStatus}>{veiculo.status}</Text>
             </View>
           </View>

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text} from "react-native";
+import { View, Text } from "react-native";
 import { Ionicons } from '@expo/vector-icons'; // Importar o Ionicons
 
 import styles from './styles';
@@ -14,11 +14,11 @@ export default function ViagemCard() {
     };
 
     return (
-
         <View style={styles.container}>
             <View style={styles.card}>
+                <View style={styles.leftBorder}></View>
                 <View style={styles.iconSquare}>
-                    <Ionicons style={styles.icon} name="map-outline" size={40}/>
+                    <Ionicons style={styles.icon} name="map-outline" size={40} />
                 </View>
 
                 <View style={styles.content}>
@@ -34,15 +34,12 @@ export default function ViagemCard() {
                         <Text style={styles.value}>{viagemExemplo.horaSaida}</Text>
                         <Text style={styles.value}>{viagemExemplo.horaChegada}</Text>
                     </View>
-                    
                 </View>
 
                 <View style={styles.iconSquareCheck}>
                     <Ionicons style={styles.iconCheck} name="checkmark-outline" size={30} />
                 </View>
-
             </View>
         </View>
     );
 }
-

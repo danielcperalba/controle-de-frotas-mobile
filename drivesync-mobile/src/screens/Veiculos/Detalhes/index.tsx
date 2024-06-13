@@ -1,29 +1,38 @@
 // src/screens/DetalhesVeiculo/index.tsx
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import PreditivaCard from "../../../components/PreditivaCard";
+import CorretivaCard from "../../../components/CorretivaCard";
+import PreventivaCard from "../../../components/PreventivaCard";
+import DetectivaCard from "../../../components/DetectivaCard";
 
 export default function DetalhesVeiculo({ route }) {
   const { veiculo } = route.params;
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.infoContainer}>
-        <Text style={styles.label}>Marca:</Text>
-        <Text style={styles.value}>{veiculo.marca}</Text>
+        <Text style={styles.value}>{veiculo.marca} {veiculo.modelo}</Text>
       </View>
       <View style={styles.infoContainer}>
-        <Text style={styles.label}>Modelo:</Text>
-        <Text style={styles.value}>{veiculo.modelo}</Text>
+        <Text style={styles.subInfo}>{veiculo.placa}</Text>
       </View>
-      <View style={styles.infoContainer}>
-        <Text style={styles.label}>Placa:</Text>
-        <Text style={styles.value}>{veiculo.placa}</Text>
+      <View style={styles.valueStatusBagde}>
+        <Text style={styles.infoStatus}>{veiculo.status}</Text>
       </View>
-      <View style={styles.infoContainer}>
-        <Text style={styles.label}>Status:</Text>
-        <Text style={styles.value}>{veiculo.status}</Text>
+
+      <View style={styles.divider} />
+
+      <Text style={styles.subtitle}>Últimas manutenções</Text>
+
+      <View style={styles.cardContainer}>
+        <PreditivaCard />
+        <CorretivaCard />
+        <PreventivaCard />
+        <DetectivaCard />
       </View>
-    </View>
+    </ScrollView>
+
   );
 }
 
@@ -33,24 +42,44 @@ const styles = StyleSheet.create({
     backgroundColor: "#202024",
     padding: 20,
   },
-  title: {
-    color: "#E1E1E6",
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
+  cardContainer:{
+    marginBottom: 30
   },
   infoContainer: {
     flexDirection: "row",
-    marginBottom: 10,
-  },
-  label: {
-    color: "#E1E1E6",
-    fontSize: 18,
-    fontWeight: "bold",
-    width: 100,
   },
   value: {
-    color: "#FFFFFF",
-    fontSize: 18,
+    color: '#E1E1E6',
+    fontSize: 32,
+    fontWeight: 'bold',
+  },
+  subInfo: {
+    color: '#E1E1E6',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 6
+  },
+  infoStatus: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: "#00B37E",
+  },
+  valueStatusBagde: {
+    backgroundColor: "#00B37E50",
+    width: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10
+  },
+  divider: {
+    height: 2,
+    backgroundColor: '#444',
+    marginVertical: 20,
+  },
+  subtitle: {
+    color: '#E1E1E6',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
 });
