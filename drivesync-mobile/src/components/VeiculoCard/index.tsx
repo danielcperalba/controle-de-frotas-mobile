@@ -1,12 +1,10 @@
-// src/components/VeiculoCard/index.tsx
 import React from "react";
 import { View, Text } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../@type/navigation';
+import { StackNavigationProp } from '../../@type/navigation';
 
 type NavigationProp = StackNavigationProp<RootStackParamList, 'DetalhesVeiculo'>;
 
@@ -31,13 +29,27 @@ export default function VeiculoCard({ veiculo }: VeiculoCardProps) {
     navigation.navigate('DetalhesVeiculo', { veiculo });
   };
 
+  // Função para definir as cores com base no status
+  const getStatusStyles = (status: string) => {
+    switch (status) {
+      case 'Em uso':
+        return { backgroundColor: '#FFD70050', color: '#FFD700' }; // Amarelo
+      case 'Manutenção':
+        return { backgroundColor: '#FF450050', color: '#FF4500' }; // Vermelho
+      default:
+        return { backgroundColor: '#00B37E50', color: '#00B37E' }; // Verde (Disponível)
+    }
+  };
+
+  const statusStyles = getStatusStyles(veiculo.status);
+
   return (
     <TouchableOpacity onPress={handleCardPress}>
       <View style={styles.container}>
         <View style={styles.card}>
-          <View style={styles.leftBorder}></View>
+          <View style={[styles.leftBorder, { backgroundColor: statusStyles.backgroundColor }]}></View>
           <View style={styles.iconSquare}>
-            <Ionicons style={styles.icon} name="car-outline" size={40} color="white" />
+            <Ionicons style={[styles.icon, { color: statusStyles.color }]} name="car-outline" size={40} color="white" />
           </View>
 
           <View style={styles.content}>
@@ -48,8 +60,8 @@ export default function VeiculoCard({ veiculo }: VeiculoCardProps) {
             <View style={styles.row}>
               <Text style={styles.valueSubtitle}>{veiculo.placa}</Text>
             </View>
-            <View style={styles.valueStatusBadge}>
-              <Text style={styles.valueStatus}>{veiculo.status}</Text>
+            <View style={[styles.valueStatusBadge, { backgroundColor: statusStyles.backgroundColor }]}>
+              <Text style={[styles.valueStatus, { color: statusStyles.color }]}>{veiculo.status}</Text>
             </View>
           </View>
 

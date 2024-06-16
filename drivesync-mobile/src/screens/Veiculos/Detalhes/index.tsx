@@ -8,16 +8,33 @@ export default function DetalhesVeiculo({ route }) {
   // Ordenar manutenções por data (mais recente primeiro)
   const manutencoesOrdenadas = veiculo.manutencoes.sort((a, b) => new Date(b.dt_manutencao).getTime() - new Date(a.dt_manutencao).getTime());
 
+  // Função para definir as cores com base no status
+  const getStatusStyles = (status: string) => {
+    switch (status) {
+      case 'Em uso':
+        return { backgroundColor: '#FFD70050', color: '#FFD700' }; // Amarelo
+      case 'Manutenção':
+        return { backgroundColor: '#FF450050', color: '#FF4500' }; // Vermelho
+      default:
+        return { backgroundColor: '#00B37E50', color: '#00B37E' }; // Verde (Disponível)
+    }
+  };
+
+  const statusStyles = getStatusStyles(veiculo.status);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.infoContainer}>
-        <Text style={styles.value}>{veiculo.marca} {veiculo.modelo}</Text>
+        <Text style={styles.value}>{veiculo.marca} {veiculo.modelo} - {veiculo.placa}</Text>
       </View>
       <View style={styles.infoContainer}>
-        <Text style={styles.subInfo}>{veiculo.placa}</Text>
+        <Text style={styles.subInfo}>{veiculo.quilometragem} Km</Text>
       </View>
-      <View style={styles.valueStatusBagde}>
-        <Text style={styles.infoStatus}>{veiculo.status}</Text>
+      <View style={styles.infoContainer}>
+        <Text style={styles.subInfo}>{veiculo.tp_combustivel}</Text>
+      </View>
+      <View style={[styles.valueStatusBadge, { backgroundColor: statusStyles.backgroundColor }]}>
+        <Text style={[styles.infoStatus, { color: statusStyles.color }]}>{veiculo.status}</Text>
       </View>
 
       <View style={styles.divider} />
@@ -47,26 +64,25 @@ const styles = StyleSheet.create({
   },
   value: {
     color: '#E1E1E6',
-    fontSize: 32,
+    fontSize: 30,
     fontWeight: 'bold',
   },
   subInfo: {
     color: '#E1E1E6',
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 6
   },
   infoStatus: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: "#00B37E",
   },
-  valueStatusBagde: {
-    backgroundColor: "#00B37E50",
-    width: 100,
+  valueStatusBadge: {
+    width: 120,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10
+    borderRadius: 10,
+    padding: 2,
+    marginTop: 6
   },
   divider: {
     height: 2,
