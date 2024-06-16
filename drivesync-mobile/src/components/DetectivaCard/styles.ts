@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     width: 364,
     height: 220,
     flexDirection: "row",
+    marginBottom: 10
   },
   iconSquare: {
     width: 70,

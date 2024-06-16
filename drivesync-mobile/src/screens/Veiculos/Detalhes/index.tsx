@@ -1,13 +1,12 @@
-// src/screens/DetalhesVeiculo/index.tsx
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import PreditivaCard from "../../../components/PreditivaCard";
-import CorretivaCard from "../../../components/CorretivaCard";
-import PreventivaCard from "../../../components/PreventivaCard";
-import DetectivaCard from "../../../components/DetectivaCard";
+import ManutencaoCard from "../../../components/ManutencaoCard";
 
 export default function DetalhesVeiculo({ route }) {
   const { veiculo } = route.params;
+
+  // Ordenar manutenções por data (mais recente primeiro)
+  const manutencoesOrdenadas = veiculo.manutencoes.sort((a, b) => new Date(b.dt_manutencao).getTime() - new Date(a.dt_manutencao).getTime());
 
   return (
     <ScrollView style={styles.container}>
@@ -26,13 +25,11 @@ export default function DetalhesVeiculo({ route }) {
       <Text style={styles.subtitle}>Últimas manutenções</Text>
 
       <View style={styles.cardContainer}>
-        <PreditivaCard />
-        <CorretivaCard />
-        <PreventivaCard />
-        <DetectivaCard />
+        {manutencoesOrdenadas.map((manutencao) => (
+          <ManutencaoCard key={manutencao.id} manutencao={manutencao} />
+        ))}
       </View>
     </ScrollView>
-
   );
 }
 
@@ -42,7 +39,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#202024",
     padding: 20,
   },
-  cardContainer:{
+  cardContainer: {
     marginBottom: 30
   },
   infoContainer: {

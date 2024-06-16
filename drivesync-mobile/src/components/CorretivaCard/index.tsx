@@ -1,44 +1,46 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Ionicons } from '@expo/vector-icons'; // Importar o Ionicons
+import { View, Text, StyleSheet } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+import styles from "./styles";
 
-import styles from './styles';
-
-export default function CorretivaCard() {
-    const manutencaoPreditiva = {
-        tipoManutencao: "Manutenção Corretiva",
-        data: "10/01/2023",
-        servico: "Substituição da bateria",
-        descricao: "A bateria estava descarregada, impossibilitando a partida do veículo. Foi realizada a troca por uma nova.",
-        dataRetorno: "Indefinido"
-    };
-
-    return (
-        <View style={styles.container}>
-            <View style={styles.card}>
-                <View style={styles.iconSquare}>
-                    <Ionicons style={styles.icon} name="cog-outline" size={40} />
-                </View>
-
-                <View style={styles.content}>
-                    <View style={styles.row}>
-                        <Text style={styles.valueTitle}>{manutencaoPreditiva.tipoManutencao}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.value}>{manutencaoPreditiva.servico}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.valueDate}>Data: {manutencaoPreditiva.data}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.value}>Retorno: {manutencaoPreditiva.dataRetorno}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.valueDescricao}>{manutencaoPreditiva.descricao}</Text>
-                    </View>
-                </View>
-            </View>
-        </View>
-    );
+interface Manutencao {
+  id: number;
+  dt_manutencao: string;
+  tp_manutencao: string;
+  veiculoId: number;
+  servico: string;   
+  descricao: string;
+  custo: number;
 }
 
+interface CorretivaCardProps {
+  manutencoes: Manutencao[];
+}
+
+export default function CorretivaCard({ manutencoes }: CorretivaCardProps) {
+  const manutencoesFiltradas = manutencoes
+    .filter(manutencao => manutencao.tp_manutencao === 'Corretiva')
+    .sort((a, b) => new Date(b.dt_manutencao).getTime() - new Date(a.dt_manutencao).getTime());
+
+  return (
+    <View style={styles.card}>
+      <View style={styles.iconSquare}>
+        <Ionicons style={styles.icon} name="build-outline" size={40} color="white" />
+      </View>
+
+      <View style={styles.content}>
+        {manutencoesFiltradas.length > 0 ? (
+          manutencoesFiltradas.map(manutencao => (
+            <View key={manutencao.id}>
+              <Text style={styles.valueTitle}>{manutencao.tp_manutencao}</Text>
+              <Text style={styles.value}>{manutencao.descricao}</Text>
+              <Text style={styles.valueDate}>{new Date(manutencao.dt_manutencao).toLocaleDateString()}</Text>
+            </View>
+          ))
+        ) : (
+          <Text style={styles.value}>Nenhuma manutenção corretiva encontrada.</Text>
+        )}
+      </View>
+    </View>
+  );
+}
