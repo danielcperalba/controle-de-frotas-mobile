@@ -1,13 +1,13 @@
-// src/screens/Veiculos/index.tsx
 import React, { useEffect, useState } from "react";
-import { View, Text, TextInput, FlatList, ActivityIndicator } from "react-native";
+import { View, Text, TextInput, FlatList, ActivityIndicator, TouchableOpacity } from "react-native";
 import styles from './styles';
 import VeiculoCard from "../../components/VeiculoCard";
 import api from "../../services/api";
 
-export default function Veiculo() {
+const Veiculo: React.FC = () => {
   const [veiculos, setVeiculos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filtroStatus, setFiltroStatus] = useState<string | null>(null); // Estado para armazenar o tipo de filtro selecionado
 
   useEffect(() => {
     async function fetchVeiculos() {
@@ -24,6 +24,12 @@ export default function Veiculo() {
     fetchVeiculos();
   }, []);
 
+  const handleFiltrar = (status: string | null) => {
+    setFiltroStatus(status);
+  };
+
+  const veiculosFiltrados = filtroStatus ? veiculos.filter(veiculo => veiculo.status === filtroStatus) : veiculos;
+
   if (loading) {
     return (
       <View style={styles.container}>
@@ -34,6 +40,8 @@ export default function Veiculo() {
 
   return (
     <View style={styles.container}>
+
+
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.input}
@@ -41,8 +49,23 @@ export default function Veiculo() {
           placeholderTextColor="#aaa"
         />
       </View>
+
+      <View style={styles.filterContainer}>
+        <TouchableOpacity style={[styles.filterButton, filtroStatus === null && styles.filterButtonSelected]} onPress={() => handleFiltrar(null)}>
+          <Text style={[styles.filterButtonText, filtroStatus === null && styles.filterButtonTextSelected]}>Todos</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.filterButton, filtroStatus === 'Disponível' && styles.filterButtonSelected]} onPress={() => handleFiltrar('Disponível')}>
+          <Text style={[styles.filterButtonText, filtroStatus === 'Disponível' && styles.filterButtonTextSelected]}>Disponível</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.filterButton, filtroStatus === 'Em uso' && styles.filterButtonSelected]} onPress={() => handleFiltrar('Em uso')}>
+          <Text style={[styles.filterButtonText, filtroStatus === 'Em uso' && styles.filterButtonTextSelected]}>Em uso</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.filterButton, filtroStatus === 'Manutenção' && styles.filterButtonSelected]} onPress={() => handleFiltrar('Manutenção')}>
+          <Text style={[styles.filterButtonText, filtroStatus === 'Manutenção' && styles.filterButtonTextSelected]}>Manutenção</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
-        data={veiculos}
+        data={veiculosFiltrados}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => <VeiculoCard veiculo={item} />}
         contentContainerStyle={styles.cardContainer}
@@ -50,3 +73,5 @@ export default function Veiculo() {
     </View>
   );
 }
+
+export default Veiculo;

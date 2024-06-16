@@ -4,22 +4,33 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#202024",
-    paddingHorizontal: 15,
+    paddingHorizontal: 20,
     paddingTop: 20,
   },
-  subtitle: {
-    color: '#E1E1E6',
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  searchContainer: {
+  filterContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
   },
-  searchIcon: {
-    marginRight: 10,
+  filterButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 11,
+    backgroundColor: '#29292E',
+    borderRadius: 6,
+    marginRight: 5,
+  },
+  filterButtonSelected: {
+    backgroundColor: '#3E3E48',
+  },
+  filterButtonText: {
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  filterButtonTextSelected: {
+    color: '#fff',
+  },
+  cardContainer: {
+    paddingBottom: 20,
   },
   input: {
     flex: 1,
@@ -30,8 +41,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     fontSize: 16,
   },
-  cardContainer:{
-    
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
   }
 });
 
