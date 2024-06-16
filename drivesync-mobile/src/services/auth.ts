@@ -1,21 +1,21 @@
-interface Response {
-  token: string;
-  user: {
-    name: string,
-    email: string,
-  };
-}
+import api from './api';
 
-export function signIn(): Promise<Response> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        token: "jk12h3j21h3jk212h3jk12h3jkh12j3kh12k123hh21g3f12f3",
+export async function signIn(email: string, senha: string): Promise<Response> {
+  try {
+    const response = await api.post('/api/Account/LoginUser', { email, senha });
+
+    if (response.data && response.data.token) {
+      return {
+        token: response.data.token,
         user: {
-          name: "Daniel Peralba",
-          email: "daniel@drivesync.com.br",
+          name: response.data.name || '',
+          email: response.data.email || email,
         },
-      });
-    }, 2000);
-  });
+      };
+    } else {
+      throw new Error('Invalid response from server');
+    }
+  } catch (error) {
+    throw new Error('Failed to login');
+  }
 }

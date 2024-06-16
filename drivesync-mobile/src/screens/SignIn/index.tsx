@@ -1,12 +1,23 @@
-import React from "react";
-import { View, Button, StyleSheet, TextInput, TouchableOpacity, Text } from "react-native";
+import React, { useState } from "react";
+import { View, Button, StyleSheet, TextInput, TouchableOpacity, Text, Alert } from "react-native";
 import { useAuth } from "../../contexts/auth";
 
 const SignIn: React.FC = () => {
   const { signIn } = useAuth();
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
 
-  function handleSign() {
-    signIn();
+  async function handleSign() {
+    if (!email || !senha) {
+      Alert.alert("Erro", "Por favor, preencha todos os campos.");
+      return;
+    }
+
+    try {
+      await signIn(email, senha);
+    } catch (error) {
+      Alert.alert("Erro", "O login falhou. Por favor, tente novamente.");
+    }
   }
 
   return (
@@ -15,12 +26,16 @@ const SignIn: React.FC = () => {
         style={styles.input}
         placeholder="E-mail"
         placeholderTextColor="#aaa"
+        value={email}
+        onChangeText={setEmail}
       />
       <TextInput
         style={styles.input}
         placeholder="Senha"
         placeholderTextColor="#aaa"
         secureTextEntry
+        value={senha}
+        onChangeText={setSenha}
       />
       <TouchableOpacity style={styles.button} onPress={handleSign}>
         <Text style={styles.buttonText}>Entrar</Text>
@@ -45,6 +60,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 15,
     fontSize: 16,
+    color: `#fff`
   },
   button: {
     width: "100%",

@@ -13,7 +13,7 @@ export default function Atividades() {
         <View style={styles.container}>
 
             <View style={styles.userInfo}>
-                <Text style={styles.info}> Olá, {user?.name}!</Text>
+                <Text style={styles.info}> Olá, {user?.email}!</Text>
             </View>
 
             <ViagemStatus />

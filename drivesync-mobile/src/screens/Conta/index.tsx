@@ -21,12 +21,13 @@ const MinhaConta: React.FC = () => {
     <View style={styles.container}>
 
       <View style={styles.circle}>
-        <Text style={styles.initials}>{getUserInitials(user?.name || '')}</Text>
+        <Ionicons name="person" size={40} color="gray" />
+        {/*<Text style={styles.initials}>{getUserInitials(user?.name || '')}</Text>*/}
       </View>
 
-      <View style={styles.userInfo}>
+      {/*<View style={styles.userInfo}>
         <Text style={styles.info}>{user?.name}</Text>
-      </View>
+      </View>*/}
 
       <View style={styles.userInfo}>
         <Text style={styles.info}>{user?.email}</Text>
