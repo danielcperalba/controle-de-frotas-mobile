@@ -11,20 +11,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#29292E",
     borderRadius: 6,
     padding: 15,
-    width: 364,
+    width: 350,
     height: 100,
     flexDirection: "row",
     position: 'relative', // Para permitir posicionamento absoluto do border
-  },
-  leftBorder: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    bottom: 0,
-    width: 5, // Largura da borda
-    backgroundColor: '#00B37E',
-    borderTopLeftRadius: 6,
-    borderBottomLeftRadius: 6,
   },
   iconSquare: {
     width: 70,

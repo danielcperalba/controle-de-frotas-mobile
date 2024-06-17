@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Button, StyleSheet, TextInput, TouchableOpacity, Text, Alert } from "react-native";
 import { useAuth } from "../../contexts/auth";
+import { Ionicons } from '@expo/vector-icons';
 
 const SignIn: React.FC = () => {
   const { signIn } = useAuth();
@@ -22,6 +23,14 @@ const SignIn: React.FC = () => {
 
   return (
     <View style={styles.container}>
+
+      <View style={styles.circle}>
+        <Ionicons name="person" size={40} color="gray" />
+        {/*<Text style={styles.initials}>{getUserInitials(user?.name || '')}</Text>*/}
+      </View>
+
+      <Text style={styles.text}>Bem vindo(a)!</Text>
+
       <TextInput
         style={styles.input}
         placeholder="E-mail"
@@ -47,10 +56,19 @@ const SignIn: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#202024",
     paddingHorizontal: 20,
+    paddingVertical: 70
+  },
+  circle: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: '#29292E',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
   },
   input: {
     width: "100%",
@@ -74,6 +92,12 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
   },
+  text: {
+    color: '#E1E1E6',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  }
 });
 
 export default SignIn;

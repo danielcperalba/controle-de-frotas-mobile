@@ -47,7 +47,6 @@ export default function VeiculoCard({ veiculo }: VeiculoCardProps) {
     <TouchableOpacity onPress={handleCardPress}>
       <View style={styles.container}>
         <View style={styles.card}>
-          <View style={[styles.leftBorder, { backgroundColor: statusStyles.backgroundColor }]}></View>
           <View style={styles.iconSquare}>
             <Ionicons style={[styles.icon, { color: statusStyles.color }]} name="car-outline" size={40} color="white" />
           </View>
